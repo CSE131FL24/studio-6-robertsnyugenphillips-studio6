@@ -62,20 +62,7 @@ public class RecursiveMethods {
 			return toReversedHelper(array, (index + 1), reverse);
 		}
 	}
-	
-	/*
-	 * [1, 2, 3, 4]
-	 * reverse = [*, *, *, *]
-	 * 
-	 * lastIndex = 4 - 1 = 3
-	 * index = 4
-	 * 
-	 * array.length = 4
-	 * array.length / 2 = 2
-	 * 4 > 2
-	 * return array[4 - 1]
-	 * 
-	 */
+
 	/**
 	 * This method uses recursion to compute the greatest common divisor
 	 * for the two input values
