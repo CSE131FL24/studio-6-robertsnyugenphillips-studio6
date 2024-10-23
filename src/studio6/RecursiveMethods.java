@@ -12,10 +12,11 @@ public class RecursiveMethods {
 	 *         ...)
 	 */
 	public static double geometricSum(int n) {
-		
-			// FIXME compute the geometric sum for the first n terms recursively
+		if(n == 0) {
 			return 0;
-		
+		} else {
+			return (1 / Math.pow(2, n)) + geometricSum(n-1);
+		}
 	}
 	
 	/**
@@ -40,12 +41,41 @@ public class RecursiveMethods {
 	 * @return an array with the same data as the input but it reverse order
 	 */
 	public static int[] toReversed(int[] array) {
-		
+		int index = 0;
+		int[] reverse = new int[array.length];
 			// FIXME create a helper method that can recursively reverse the given array
-			return new int[0];
-		
+		if (array.length > 0) {
+			return toReversedHelper(array, index, reverse);
+		} else {
+			return reverse;
+		}
+	}
+
+	public static int[] toReversedHelper(int[] array, int index, int[] reverse) {
+		int lastIndex = array.length - 1;
+		if (index > array.length / 2) { 
+			return reverse;
+		} else {
+			int mirrorIndex = lastIndex - index;
+			reverse[index] = array[mirrorIndex];
+			reverse[mirrorIndex] = array[index];
+			return toReversedHelper(array, (index + 1), reverse);
+		}
 	}
 	
+	/*
+	 * [1, 2, 3, 4]
+	 * reverse = [*, *, *, *]
+	 * 
+	 * lastIndex = 4 - 1 = 3
+	 * index = 4
+	 * 
+	 * array.length = 4
+	 * array.length / 2 = 2
+	 * 4 > 2
+	 * return array[4 - 1]
+	 * 
+	 */
 	/**
 	 * This method uses recursion to compute the greatest common divisor
 	 * for the two input values
